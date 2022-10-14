@@ -3,7 +3,7 @@
 #include <iostream>
 
 int main(int argc, char *argv[]) {
-    //QCoreApplication a(argc, argv);
+    QCoreApplication a(argc, argv);
 
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
             QSqlRecord record = query.record();
             std::cout << "|";
             for (int i = 0; i < record.count(); i++) {
-                std::cout.width(12);
+                std::cout.width(15);
                 std::cout << record.fieldName(i).toStdString() << "|";
             }
             std::cout << std::endl;
@@ -46,7 +46,7 @@ int main(int argc, char *argv[]) {
                 record = query.record();
                 std::cout << "|";
                 for (int i = 0; i < record.count(); i++) {
-                    std::cout.width(12);
+                    std::cout.width(15);
                     std::cout << record.value(i).toString().toStdString() << "|";
                 }
                 std::cout << std::endl;
@@ -56,6 +56,5 @@ int main(int argc, char *argv[]) {
     }
 
     std::cout << "OK" << std::endl;
-    //return QCoreApplication::exec();
-    return 0;
+    return QCoreApplication::exec();
 }
