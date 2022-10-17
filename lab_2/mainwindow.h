@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtSql>
+#include <QShortcut>
 
 #include "dialog.h"
 
@@ -20,11 +21,31 @@ public:
 
 private slots:
     void on_input_db_clicked();
+    void on_build_clicked();
+    void on_show_table_list_doubleClicked(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;
     Dialog         *dialog;
-    QSqlDatabase   *db;
-};
+    QSqlDatabase    db;
 
+    QString         HostName;
+    QString         DatabaseName;
+    int             Port;
+    QString         UserName;
+    QString         Password;
+    QShortcut      *shortcut;
+
+    void update_table_list();
+    void update_error(QSqlQuery &query);
+    void update_log();
+    void load_dp_options();
+    void init_db_options();
+
+    void setHostName     (QString &HostName);
+    void setDatabaseName (QString &DatabaseName);
+    void setPort         (int      Port);
+    void setUserName     (QString &UserName);
+    void setPassword     (QString &Password);
+};
 #endif

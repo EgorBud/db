@@ -3,11 +3,13 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 
-Dialog::Dialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::Dialog)
+Dialog::Dialog(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::Dialog)
 {
-    ui->setupUi(this);
+    QDialog *d = this;
+    d->setFixedSize(360, 190);
+    ui->setupUi(d);
 }
 
 Dialog::~Dialog()
@@ -18,6 +20,7 @@ Dialog::~Dialog()
 void Dialog::on_ok_clicked()
 {
     qDebug() << "Pressed ok";
+    save_db_options();
 }
 
 
@@ -27,3 +30,8 @@ void Dialog::on_cancel_clicked()
     hide();
 }
 
+// сохранить данные о бд в файл
+void Dialog::save_db_options()
+{
+
+}
