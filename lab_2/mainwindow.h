@@ -37,7 +37,7 @@ private:
     QShortcut      *shortcut;
 
     void update_table_list();
-    void update_error(QSqlQuery &query);
+    void update_error(QString string);
     void update_log();
     void load_dp_options();
     void init_db_options();

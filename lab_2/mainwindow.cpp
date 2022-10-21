@@ -1,7 +1,6 @@
 #include <QStringList>
 #include <QTableView>
 #include <QMessageBox>
-#include <iostream>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -11,9 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-    QMainWindow *win = this;
-    win->setFixedSize(810, 610);
-    ui->setupUi(win);
+    ui->setupUi(this);
     dialog = new Dialog(this);
 
     // shortcut ctrl + d
@@ -44,11 +41,16 @@ void MainWindow::on_show_table_list_doubleClicked(const QModelIndex &index)
 
 void MainWindow::on_build_clicked()
 {
-    QSqlQuery query(db);
-    query.exec(ui->input_field->toPlainText());
+    QString command = ui->input_field->toPlainText();
+    if(command == "") {
+        update_error("ERROR: empty query");
+        return;
+    }
 
+    QSqlQuery query(db);
+    query.exec(command);
     if(!query.isActive()) {
-        update_error(query);
+        update_error(query.lastError().text());
         return;
     }
 
@@ -69,9 +71,9 @@ void MainWindow::update_table_list()
     ui->show_table_list->setModel(setquery);
 }
 
-void MainWindow::update_error(QSqlQuery &query)
+void MainWindow::update_error(QString string)
 {
-    ui->show_errors->append(query.lastError().text());
+    ui->show_errors->append(string);
 }
 
 void MainWindow::update_log()
@@ -97,6 +99,14 @@ void MainWindow::init_db_options()
     db.setPassword("bmstu");
 
     load_dp_options();
+
+    bool check = db.open();
+    if (!check) {
+        update_error(db.lastError().text());
+        qDebug() << "ERROR: database not open";
+        return;
+    }
+
     update_table_list();
 }
 

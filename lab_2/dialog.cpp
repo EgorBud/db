@@ -7,9 +7,7 @@ Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Dialog)
 {
-    QDialog *d = this;
-    d->setFixedSize(360, 190);
-    ui->setupUi(d);
+    ui->setupUi(this);
 }
 
 Dialog::~Dialog()
