@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     // shortcut ctrl + d
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_D), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(on_build_clicked()));
-
+    connect(this->dialog, SIGNAL(update_db()), this, SLOT(update_db_options()));
     init_db_options();
 }
 
@@ -29,6 +29,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_input_db_clicked()
 {
     dialog->show();
+  load_dp_options();
+
 }
 
 void MainWindow::on_show_table_list_doubleClicked(const QModelIndex &index)
@@ -63,6 +65,19 @@ void MainWindow::on_build_clicked()
 
 }
 
+void MainWindow::update_db_options()
+{
+    load_dp_options();
+    bool check = db.open();
+    if (!check) {
+        update_error(db.lastError().text());
+        qDebug() << "ERROR: database not open";
+        return;
+    }
+
+    update_table_list();
+}
+
 void MainWindow::update_table_list()
 {
     QSqlQueryModel *setquery = new QSqlQueryModel;
@@ -84,19 +99,37 @@ void MainWindow::update_log()
 // открыть файл и заполнить поля класса
 void MainWindow::load_dp_options()
 {
+QFile fin("file.txt");
+if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)){
+       db.setHostName("195.19.32.74");
+       db.setDatabaseName("fn1132_2022");
+       db.setPort(5432);
+       db.setUserName("student");
+       db.setPassword("bmstu");
+      return;}
+QTextStream in(&fin);
+   QString line;
+
+
+   line = in.readLine();
+   db.setHostName          (line);
+   line = in.readLine();
+   db.setDatabaseName      (line);
+   line = in.readLine();
+   db.setPort              (line.toInt());
+   line = in.readLine();
+   db.setUserName          (line);
+   line = in.readLine();
+   db.setPassword          (line);
+
+
+
 
 }
 
 void MainWindow::init_db_options()
 {  
     db = QSqlDatabase::addDatabase("QPSQL");
-
-    // база даных препода
-    db.setHostName("195.19.32.74");
-    db.setDatabaseName("fn1132_2022");
-    db.setPort(5432);
-    db.setUserName("student");
-    db.setPassword("bmstu");
 
     load_dp_options();
 

@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QShortcut>
 
+
 #include "dialog.h"
 
 QT_BEGIN_NAMESPACE
@@ -23,6 +24,7 @@ private slots:
     void on_input_db_clicked();
     void on_build_clicked();
     void on_show_table_list_doubleClicked(const QModelIndex &index);
+    void update_db_options();
 
 private:
     Ui::MainWindow *ui;

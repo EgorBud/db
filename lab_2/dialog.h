@@ -1,8 +1,7 @@
 #ifndef DIALOG_H
 #define DIALOG_H
-
+#include <QFile>
 #include <QDialog>
-
 namespace Ui {
 class Dialog;
 }
@@ -18,6 +17,9 @@ public:
 private slots:
     void on_ok_clicked();
     void on_cancel_clicked();
+
+signals:
+    void update_db();
 
 private:
     Ui::Dialog *ui;
