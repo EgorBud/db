@@ -17,37 +17,31 @@ Dialog::~Dialog()
 
 void Dialog::on_ok_clicked()
 {
-    qDebug() << "Pressed ok";
     save_db_options();
     emit update_db();
-        hide();
+    hide();
 }
 
 
 void Dialog::on_cancel_clicked()
 {
-    qDebug() << "Pressed cancel";
     hide();
 }
 
-// сохранить данные о бд в файл
 void Dialog::save_db_options()
 {
-
-QFile fout("file.txt");
-if (!fout.open(QIODevice::WriteOnly | QIODevice::Text))
-{
+    QFile fout("file.txt");
+    if (!fout.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
         qDebug() << "ERROR";
-    return;
-
-}
-QTextStream out(&fout);
-//fout.open("save.bin");
-out    <<ui->adress         ->text()<<"\n"
-        <<ui->database_name ->text()<<"\n"
-        <<ui->port          ->text()<<"\n"
-        <<ui->user_name     ->text()<<"\n"
-        <<ui->password      ->text()<<"\n"  ;
-fout.close();
+        return;
+    }
+    QTextStream out(&fout);
+    out << ui->adress        ->text() << "\n"
+        << ui->database_name ->text() << "\n"
+        << ui->port          ->text() << "\n"
+        << ui->user_name     ->text() << "\n"
+        << ui->password      ->text() << "\n";
+    fout.close();
 
 }

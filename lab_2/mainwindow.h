@@ -5,7 +5,6 @@
 #include <QtSql>
 #include <QShortcut>
 
-
 #include "dialog.h"
 
 QT_BEGIN_NAMESPACE
@@ -43,11 +42,6 @@ private:
     void update_log();
     void load_dp_options();
     void init_db_options();
-
-    void setHostName     (QString &HostName);
-    void setDatabaseName (QString &DatabaseName);
-    void setPort         (int      Port);
-    void setUserName     (QString &UserName);
-    void setPassword     (QString &Password);
 };
+
 #endif
