@@ -1,0 +1,38 @@
+﻿CREATE TABLE students(s_id int PRIMARY KEY, lastName varchar(255), firstName varchar(255), nameOfGroup varchar(255));
+
+CREATE TABLE hvosti(predmet varchar(255), s_id INT, FOREIGN KEY(s_id) REFERENCES students(s_id) ON DELETE CASCADE);
+
+INSERT INTO students VALUES 	
+	(1, 'Smirnov', 'Bob', 'iu'), 
+	(2, 'Ivanov', 'Alexander', 'fn'), 
+	(3, 'Petrov', 'Igor', 'iu'), 	
+	(4, 'Volkov', 'Semen', 'ak'), 
+	(5, 'Kuznetsov', 'Victor', 'mt'), 
+	(6, 'Vorobyov', 'Max', 'iu'), 	
+	(7, 'Vasilyev', 'Alecksey', 'fn'), 
+	(8, 'Pavlov', 'Stas', 'ibm'), 
+	(9, 'Lebedev', 'Tom', 'iu'), 
+	(10, 'Morozov', 'Alexander', 'ak')
+
+INSERT INTO hvosti VALUES 
+	('matan', 1), ('angem', 1),('fizra', 1),
+	('linal' , 5),('kulturolgia' , 5),('matan' , 5),('algebra' , 5),('kratniki' , 5),	
+	('angem', 6), ('funkan', 6),
+	('linal' , 7), ('matan' , 7),('difgem' , 7),
+	('matan', 8)
+
+	Поиск должников
+SELECT * FROM students
+SELECT * FROM hvosti
+
+SELECT DISTINCT s.s_id, s.lastName, s.nameOfGroup,
+CASE
+    WHEN s.nameOfGroup = 'iu' then 'kiberkotleta'
+    ELSE 'rydovoiy'
+  END
+AS dolznost
+FROM students s 
+JOIN hvosti h ON s.s_id = h.s_id 
+WHERE (
+    SELECT COUNT(predmet) FROM hvosti WHERE s_id = h.s_id
+) >= 3
