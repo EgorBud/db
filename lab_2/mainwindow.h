@@ -42,6 +42,7 @@ private:
     void update_log();
     void load_dp_options();
     void init_db_options();
+    void reconnect();
 };
 
 #endif

@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_D), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(on_build_clicked()));
     connect(this->dialog, SIGNAL(update_db()), this, SLOT(update_db_options()));
+    ui->show_table_list->setEditTriggers(QAbstractItemView::NoEditTriggers);
     init_db_options();
 }
 
@@ -31,14 +32,16 @@ void MainWindow::on_input_db_clicked()
 
 void MainWindow::on_show_table_list_doubleClicked(const QModelIndex &index)
 {
+    reconnect();
     QString name_table = (index.model()->data(index.model()->index(index.row(),index.column())).toString());
-    QSqlQueryModel *query_model = new QSqlQueryModel;
+    QSqlQueryModel *query_model = new QSqlQueryModel();
     query_model->setQuery("SELECT * FROM " + name_table);
     ui->show_table->setModel(query_model);
 }
 
 void MainWindow::on_build_clicked()
 {
+    reconnect();
     QString command = ui->input_field->toPlainText();
     if(command == "") {
         update_error("ERROR: empty query");
@@ -74,10 +77,10 @@ void MainWindow::update_db_options()
 
 void MainWindow::update_table_list()
 {
-    QSqlQueryModel *setquery = new QSqlQueryModel;
-    setquery->setQuery("SELECT table_name AS \"список таблиц\" FROM information_schema.tables\
-                        WHERE table_schema = 'public'");
-    ui->show_table_list->setModel(setquery);
+    QStringList tables = db.tables();
+    QStringListModel *model = new QStringListModel();
+    model->setStringList(tables);
+    ui->show_table_list->setModel(model);
 }
 
 void MainWindow::update_error(QString string)
@@ -126,5 +129,13 @@ void MainWindow::init_db_options()
     update_table_list();
 }
 
+void MainWindow::reconnect()
+{
+    if (!db.open()) {
+        db.setConnectOptions();
+        db.open();
+        qDebug() << "Reconnect";
+    }
+}
 
 
