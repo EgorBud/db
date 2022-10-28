@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QtSql>
 #include <QShortcut>
-
+#include <QFile>
 #include "dialog.h"
 
 QT_BEGIN_NAMESPACE

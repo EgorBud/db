@@ -1,7 +1,7 @@
 #ifndef DIALOG_H
 #define DIALOG_H
-#include <QFile>
 #include <QDialog>
+#include <QSettings>
 namespace Ui {
 class Dialog;
 }
