@@ -17,6 +17,18 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this->dialog, SIGNAL(update_db()), this, SLOT(update_db_options()));
     ui->show_table_list->setEditTriggers(QAbstractItemView::NoEditTriggers);
     init_db_options();
+
+    QFile fin("file.txt");
+    if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "ERROR";
+        return;
+    }
+
+    QTextStream in(&fin);
+QString text;
+    //in.text;
+ ui->show_logs->setText(in.readAll());
+ fin.close();
 }
 
 MainWindow::~MainWindow()
@@ -90,30 +102,33 @@ void MainWindow::update_error(QString string)
 
 void MainWindow::update_log()
 {
+
     ui->show_logs->append(ui->input_field->toPlainText());
+
+    QFile fout("file.txt");
+    if (!fout.open(QIODevice::WriteOnly | QIODevice::Text |QIODevice::Append))
+    {
+        qDebug() << "ERROR";
+        return;
+    }
+    QTextStream out(&fout);
+    out << ui->input_field->toPlainText() << "\n";
+    fout.close();
+
 }
 
 void MainWindow::load_dp_options()
 {
-    QFile fin("file.txt");
-    if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        db.setHostName("195.19.32.74");
-        db.setDatabaseName("fn1132_2022");
-        db.setPort(5432);
-        db.setUserName("student");
-        db.setPassword("bmstu");
-        return;
-    }
 
-    QTextStream in(&fin);
-    in >> HostName >> DatabaseName
-       >> Port >> UserName >> Password;
+    QSettings settings ("settings.ini",QSettings::IniFormat);
+     settings.beginGroup("Settings");
+    db.setHostName      (settings.value("adress"       ,"195.19.32.74").toString());
+    db.setDatabaseName  (settings.value("database_name","fn1132_2022" ).toString());
+    db.setPort          (settings.value("port"         , 5432          ).toInt());
+    db.setUserName      (settings.value("username"     ,"student"     ).toString());
+    db.setPassword      (settings.value("password"     ,"bmstu"       ).toString());
 
-    db.setHostName(HostName);
-    db.setDatabaseName(DatabaseName);
-    db.setPort(Port);
-    db.setUserName(UserName);
-    db.setPassword(Password);
+             settings.endGroup();
 }
 
 void MainWindow::init_db_options()
