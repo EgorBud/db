@@ -11,12 +11,13 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    dialog = new Dialog(this);
     shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_D), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(on_build_clicked()));
-    connect(this->dialog, SIGNAL(update_db()), this, SLOT(update_db_options()));
     ui->show_table_list->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
     init_db_options();
+    dialog = new Dialog(this);
+    connect(this->dialog, SIGNAL(update_db()), this, SLOT(update_db_options()));
 
     QFile fin("file.txt");
     if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -25,10 +26,8 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     QTextStream in(&fin);
-QString text;
-    //in.text;
- ui->show_logs->setText(in.readAll());
- fin.close();
+    ui->show_logs->setText(in.readAll());
+    fin.close();
 }
 
 MainWindow::~MainWindow()
@@ -39,7 +38,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_input_db_clicked()
 {
     dialog->show();
-    load_dp_options();
 }
 
 void MainWindow::on_show_table_list_doubleClicked(const QModelIndex &index)
@@ -75,6 +73,7 @@ void MainWindow::on_build_clicked()
     update_table_list();
 }
 
+
 void MainWindow::update_db_options()
 {
     load_dp_options();
@@ -86,6 +85,7 @@ void MainWindow::update_db_options()
     }
     update_table_list();
 }
+
 
 void MainWindow::update_table_list()
 {
@@ -102,7 +102,6 @@ void MainWindow::update_error(QString string)
 
 void MainWindow::update_log()
 {
-
     ui->show_logs->append(ui->input_field->toPlainText());
 
     QFile fout("file.txt");
@@ -114,21 +113,26 @@ void MainWindow::update_log()
     QTextStream out(&fout);
     out << ui->input_field->toPlainText() << "\n";
     fout.close();
-
 }
 
 void MainWindow::load_dp_options()
 {
+    QSettings settings ("settings.ini", QSettings::IniFormat);
+    settings.beginGroup("Settings");
+    db.setHostName      (settings.value("adress"      , "195.19.32.74").toString());
+    db.setDatabaseName  (settings.value("databasename", "fn1132_2022" ).toString());
+    db.setPort          (settings.value("port"        ,  5432         ).toInt());
+    db.setUserName      (settings.value("username"    , "student"     ).toString());
+    db.setPassword      (settings.value("password"    , "bmstu"       ).toString());
+    settings.endGroup();
 
-    QSettings settings ("settings.ini",QSettings::IniFormat);
-     settings.beginGroup("Settings");
-    db.setHostName      (settings.value("adress"       ,"195.19.32.74").toString());
-    db.setDatabaseName  (settings.value("database_name","fn1132_2022" ).toString());
-    db.setPort          (settings.value("port"         , 5432          ).toInt());
-    db.setUserName      (settings.value("username"     ,"student"     ).toString());
-    db.setPassword      (settings.value("password"     ,"bmstu"       ).toString());
-
-             settings.endGroup();
+    settings.beginGroup("Settings");
+    settings.setValue("adress"      , db.hostName());
+    settings.setValue("databasename", db.databaseName());
+    settings.setValue("port"        , db.port());
+    settings.setValue("username"    , db.userName());
+    settings.setValue("password"    , db.password());
+    settings.endGroup();
 }
 
 void MainWindow::init_db_options()

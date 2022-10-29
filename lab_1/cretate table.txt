@@ -1,6 +1,18 @@
-﻿CREATE TABLE students(s_id int PRIMARY KEY, lastName varchar(255), firstName varchar(255), nameOfGroup varchar(255));
+﻿CREATE TABLE students(
+    s_id int PRIMARY KEY, 
+    lastName TEXT, 
+    firstName TEXT, 
+    nameOfGroup TEXT
+);
 
-CREATE TABLE hvosti(predmet varchar(255), s_id INT, FOREIGN KEY(s_id) REFERENCES students(s_id) ON DELETE CASCADE);
+CREATE TABLE hvosti(
+    predmet TEXT, 
+    s_id INT, 
+    PRIMARY KEY(predmet, s_id),
+    FOREIGN KEY(s_id) 
+    REFERENCES students(s_id) 
+    ON DELETE CASCADE
+);
 
 INSERT INTO students VALUES 	
 	(1, 'Smirnov', 'Bob', 'iu'), 
