@@ -2,7 +2,21 @@
 #include <QtSql>
 #include <iostream>
 
-int main(int argc, char *argv[]) {
+
+void printLine(QSqlRecord record)
+{
+    std::cout << "+";
+    std::cout.fill('-');
+    for (int i = 0; i < record.count(); i++) {
+        std::cout.width(16);
+        std::cout << "+";
+    }
+    std::cout.fill(' ');
+    std::cout << std::endl;
+}
+
+int main(int argc, char *argv[])
+{
     QCoreApplication a(argc, argv);
 
     QSqlDatabase db;
@@ -35,12 +49,15 @@ int main(int argc, char *argv[]) {
         else {
 
             QSqlRecord record = query.record();
+
+            printLine(record);
             std::cout << "|";
             for (int i = 0; i < record.count(); i++) {
                 std::cout.width(15);
                 std::cout << record.fieldName(i).toStdString() << "|";
             }
             std::cout << std::endl;
+            printLine(record);
 
             while (query.next()) {
                 record = query.record();
@@ -51,7 +68,7 @@ int main(int argc, char *argv[]) {
                 }
                 std::cout << std::endl;
             }
-
+            printLine(record);
         }
     }
 

@@ -97,11 +97,12 @@ void MainWindow::update_table_list()
 
 void MainWindow::update_error(QString string)
 {
-    ui->show_errors->append(string);
+    ui->show_errors->setText(string);
 }
 
 void MainWindow::update_log()
 {
+    update_error("");
     ui->show_logs->append(ui->input_field->toPlainText());
 
     QFile fout("file.txt");
