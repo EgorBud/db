@@ -1,0 +1,113 @@
+CREATE TABLE main(
+	tstamp TIMESTAMP, 
+	songer TEXT,
+	music TEXT,
+	city TEXT,
+	PRIMARY KEY(tstamp, songer)
+);
+
+
+--Justin Bieber
+INSERT INTO main
+VALUES
+	('2020-01-01 0:00:00' , 'Justin Bieber', 'As Long As You Love Me', 'New York'     ),
+	('2020-01-01 1:00:00' , 'Justin Bieber', 'Baby'                  , 'New York'     ),
+	('2020-01-01 2:00:00' , 'Justin Bieber', 'Beauty And A Beat'     , 'New York'     ),
+	('2020-01-01 3:00:00' , 'Justin Bieber', 'As Long As You Love Me', 'Los Angeles'  ),
+	('2020-01-01 4:00:00' , 'Justin Bieber', 'Baby'                  , 'Los Angeles'  ),
+	('2020-01-01 5:00:00' , 'Justin Bieber', 'Beauty And A Beat'     , 'Los Angeles'  ),
+	('2020-01-01 6:00:00' , 'Justin Bieber', 'Never Say Never'       , 'Los Angeles'  ),
+	('2020-01-01 7:00:00' , 'Justin Bieber', 'Eenie Meenie'          , 'Los Angeles'  ),
+	('2020-01-01 8:00:00' , 'Justin Bieber', 'As Long As You Love Me', 'San Francisco'),
+	('2020-01-01 9:00:00' , 'Justin Bieber', 'Beauty And A Beat'     , 'San Francisco'),
+	('2020-01-01 10:00:00', 'Justin Bieber', 'Eenie Meenie'          , 'San Francisco');
+
+--Billy Ailish
+INSERT INTO main
+VALUES
+	('2020-01-01 11:00:00', 'Billy Ailish', 'Goldwing'         , 'Miami'      ),
+	('2020-01-01 12:00:00', 'Billy Ailish', 'Getting Older'    , 'Miami'      ),
+	('2020-01-01 13:00:00', 'Billy Ailish', 'Male Fantasy'     , 'Miami'      ),
+	('2020-01-01 14:00:00', 'Billy Ailish', 'Happier Than Ever', 'Miami'      ),
+	('2020-01-01 15:00:00', 'Billy Ailish', 'NDA'              , 'Miami'      ),
+	('2020-01-01 16:00:00', 'Billy Ailish', 'Goldwing'         , 'Boston'     ),
+	('2020-01-01 17:00:00', 'Billy Ailish', 'Male Fantasy'     , 'Boston'     ),
+	('2020-01-01 18:00:00', 'Billy Ailish', 'NDA'              , 'Boston'     ),
+	('2020-01-01 19:00:00', 'Billy Ailish', 'Goldwing'         , 'New York'   ),
+	('2020-01-01 20:00:00', 'Billy Ailish', 'Goldwing'         , 'Los Angeles'),
+	('2020-01-01 21:00:00', 'Billy Ailish', 'Getting Older'    , 'Los Angeles'),
+	('2020-01-01 22:00:00', 'Billy Ailish', 'Male Fantasy'     , 'Los Angeles'),
+	('2020-01-01 23:00:00', 'Billy Ailish', 'Happier Than Ever', 'Los Angeles');
+
+--Ed Sheeran
+INSERT INTO main
+VALUES
+	('2020-01-02 0:00:00', 'Ed Sheeran', 'Shape of You'      , 'New York'     ),
+	('2020-01-03 0:00:00', 'Ed Sheeran', 'Galway Girl'       , 'New York'     ),
+	('2020-01-04 0:00:00', 'Ed Sheeran', 'Castle on the Hill', 'New York'     ),
+	('2020-01-05 0:00:00', 'Ed Sheeran', 'Perfect'           , 'New York'     ),
+	('2020-01-06 0:00:00', 'Ed Sheeran', 'I See Fire'        , 'New York'     ),
+	('2020-01-07 0:00:00', 'Ed Sheeran', 'Shape of You'      , 'Los Angeles'  ),
+	('2020-01-08 0:00:00', 'Ed Sheeran', 'Galway Girl'       , 'Los Angeles'  ),
+	('2020-01-09 0:00:00', 'Ed Sheeran', 'Castle on the Hill', 'Los Angeles'  ),
+	('2020-01-10 0:00:00', 'Ed Sheeran', 'Perfect'           , 'Los Angeles'  ),
+	('2020-01-11 0:00:00', 'Ed Sheeran', 'I See Fire'        , 'Los Angeles'  ),
+	('2020-01-12 0:00:00', 'Ed Sheeran', 'Shape of You'      , 'Miami'        ),
+	('2020-01-13 0:00:00', 'Ed Sheeran', 'Galway Girl'       , 'Miami'        ),
+	('2020-01-14 0:00:00', 'Ed Sheeran', 'Castle on the Hill', 'Miami'        ),
+	('2020-01-15 0:00:00', 'Ed Sheeran', 'Perfect'           , 'Miami'        ),
+	('2020-01-16 0:00:00', 'Ed Sheeran', 'I See Fire'        , 'Miami'        ),
+	('2020-01-17 0:00:00', 'Ed Sheeran', 'Shape of You'      , 'Boston'       ),
+	('2020-01-18 0:00:00', 'Ed Sheeran', 'Galway Girl'       , 'Boston'       ),
+	('2020-01-19 0:00:00', 'Ed Sheeran', 'Castle on the Hill', 'Boston'       ),
+	('2020-01-20 0:00:00', 'Ed Sheeran', 'Perfect'           , 'Boston'       ),
+	('2020-01-21 0:00:00', 'Ed Sheeran', 'I See Fire'        , 'Boston'       ),
+	('2020-01-22 0:00:00', 'Ed Sheeran', 'Shape of You'      , 'San Francisco'),
+	('2020-01-23 0:00:00', 'Ed Sheeran', 'Galway Girl'       , 'San Francisco'),
+	('2020-01-24 0:00:00', 'Ed Sheeran', 'Castle on the Hill', 'San Francisco'),
+	('2020-01-25 0:00:00', 'Ed Sheeran', 'Perfect'           , 'San Francisco'),
+	('2020-01-26 0:00:00', 'Ed Sheeran', 'I See Fire'        , 'San Francisco');
+
+--Freddie Mercury
+INSERT INTO main
+VALUES
+	('2020-01-27 0:00:00', 'Freddie Mercury', 'We Are the Champions', 'New York'     ),
+	('2020-01-28 0:00:00', 'Freddie Mercury', 'Bohemian Rhapsody'   , 'New York'     ),
+	('2020-01-29 0:00:00', 'Freddie Mercury', 'Killer Queen'        , 'New York'     ),
+	('2020-01-30 0:00:00', 'Freddie Mercury', 'Seven Seas of Rhye'  , 'New York'     ),
+	('2020-01-31 0:00:00', 'Freddie Mercury', 'Somebody to Love'    , 'New York'     ),
+	('2020-02-01 0:00:00', 'Freddie Mercury', 'We Are the Champions', 'Los Angeles'  ),
+	('2020-02-02 0:00:00', 'Freddie Mercury', 'Bohemian Rhapsody'   , 'Los Angeles'  ),
+	('2020-02-03 0:00:00', 'Freddie Mercury', 'Killer Queen'        , 'Los Angeles'  ),
+	('2020-02-04 0:00:00', 'Freddie Mercury', 'Seven Seas of Rhye'  , 'Los Angeles'  ),
+	('2020-02-05 0:00:00', 'Freddie Mercury', 'Somebody to Love'    , 'Los Angeles'  ),
+	('2020-02-06 0:00:00', 'Freddie Mercury', 'We Are the Champions', 'San Francisco'),
+	('2020-02-07 0:00:00', 'Freddie Mercury', 'Bohemian Rhapsody'   , 'San Francisco'),
+	('2020-02-08 0:00:00', 'Freddie Mercury', 'Seven Seas of Rhye'  , 'San Francisco'),
+	('2020-02-09 0:00:00', 'Freddie Mercury', 'Somebody to Love'    , 'San Francisco');
+
+--Kurt Cobain
+INSERT INTO main
+VALUES
+	('2020-02-10 0:00:00' , 'Kurt Cobain', 'Smells Like Teen Spirit', 'Los Angeles'  ),
+	('2020-02-11 0:00:00' , 'Kurt Cobain', 'All Apologies'          , 'Los Angeles'  ),
+	('2020-02-12 0:00:00' , 'Kurt Cobain', 'Drain You'              , 'Los Angeles'  ),
+	('2020-02-13 0:00:00' , 'Kurt Cobain', 'Lithium'                , 'Los Angeles'  ),
+	('2020-02-14 0:00:00' , 'Kurt Cobain', 'Rape Me'                , 'Los Angeles'  ),
+	('2020-02-15 0:00:00' , 'Kurt Cobain', 'Smells Like Teen Spirit', 'New York'     ),
+	('2020-02-16 0:00:00' , 'Kurt Cobain', 'Drain You'              , 'New York'     ),
+	('2020-02-17 0:00:00' , 'Kurt Cobain', 'Lithium'                , 'New York'     ),
+	('2020-02-18 0:00:00' , 'Kurt Cobain', 'Rape Me'                , 'New York'     ),
+	('2020-02-19 0:00:00' , 'Kurt Cobain', 'Smells Like Teen Spirit', 'Miami'        ),
+	('2020-02-20 0:00:00' , 'Kurt Cobain', 'All Apologies'          , 'Miami'        ),
+	('2020-02-21 0:00:00' , 'Kurt Cobain', 'Drain You'              , 'Miami'        ),
+	('2020-02-22 0:00:00' , 'Kurt Cobain', 'Lithium'                , 'Miami'        ),
+	('2020-02-23 0:00:00' , 'Kurt Cobain', 'Rape Me'                , 'Miami'        ),
+	('2020-02-24 0:00:00' , 'Kurt Cobain', 'Smells Like Teen Spirit', 'Boston'       ),
+	('2020-02-25 0:00:00' , 'Kurt Cobain', 'Drain You'              , 'Boston'       ),
+	('2020-01-04 7:00:00' , 'Kurt Cobain', 'Rape Me'                , 'Boston'       ),
+	('2020-01-04 8:00:00' , 'Kurt Cobain', 'Smells Like Teen Spirit', 'San Francisco'),
+	('2020-01-04 9:00:00' , 'Kurt Cobain', 'All Apologies'          , 'San Francisco'),
+	('2020-01-04 10:00:00', 'Kurt Cobain', 'Drain You'              , 'San Francisco');
+
+

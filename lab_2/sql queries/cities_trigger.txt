@@ -1,0 +1,30 @@
+CREATE OR REPLACE FUNCTION update_rate_cities() RETURNS trigger AS $$
+    DECLARE
+		max_songs numeric;
+	BEGIN
+		SELECT INTO max_songs  COUNT(songer) AS cnt
+		FROM main
+		GROUP BY (city)
+		ORDER BY cnt
+		DESC LIMIT 1;
+		
+		INSERT INTO cities SELECT city, COUNT(songer) / max_songs
+		FROM main GROUP BY (city)
+		ON CONFLICT(city) 
+		DO UPDATE SET rate = EXCLUDED.rate;
+		
+		--сделать чтобы rate = 0
+		DELETE FROM cities
+		WHERE city NOT IN (SELECT city FROM main GROUP BY city);
+		
+		IF (TG_OP = 'DELETE') THEN
+            RETURN OLD;
+		ELSE
+        	RETURN NEW;
+		END IF;
+    END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER update_rate_cities 
+AFTER INSERT OR UPDATE OR DELETE ON main
+    FOR EACH ROW EXECUTE PROCEDURE update_rate_cities();

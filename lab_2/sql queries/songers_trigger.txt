@@ -1,0 +1,30 @@
+CREATE OR REPLACE FUNCTION update_rate_songers() RETURNS trigger AS $$
+    DECLARE
+		max_songs numeric;
+	BEGIN
+		SELECT INTO max_songs  COUNT(songer) AS cnt
+		FROM main
+		GROUP BY (songer)
+		ORDER BY cnt
+		DESC LIMIT 1;
+		
+		INSERT INTO songers SELECT songer, COUNT(songer) / max_songs
+		FROM main GROUP BY (songer)
+		ON CONFLICT(songer) 
+		DO UPDATE SET rate = EXCLUDED.rate;
+		
+		--сделать чтобы rate = 0
+		DELETE FROM songers
+		WHERE songer NOT IN (SELECT songer FROM main GROUP BY songer);
+		
+		IF (TG_OP = 'DELETE') THEN
+            RETURN OLD;
+		ELSE
+        	RETURN NEW;
+		END IF;
+    END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER update_rate_songers 
+AFTER INSERT OR UPDATE OR DELETE ON main
+    FOR EACH ROW EXECUTE PROCEDURE update_rate_songers();

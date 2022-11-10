@@ -1,0 +1,14 @@
+CREATE OR REPLACE FUNCTION input_main() RETURNS trigger AS $$
+	BEGIN
+	--проверка поля songer
+	
+	--проверка поля music
+	
+	--проверка поля city
+
+    END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE TRIGGER input_main 
+BEFORE INSERT OR UPDATE ON main
+    FOR EACH ROW EXECUTE PROCEDURE input_main();

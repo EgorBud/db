@@ -1,0 +1,17 @@
+CREATE TABLE songers(
+	songer TEXT PRIMARY KEY, 
+	rate NUMERIC
+)
+
+INSERT INTO songers(songer) 
+VALUES
+	('Justin Bieber'),
+	('Billy Ailish'),
+	('Ed Sheeran'),
+	('Freddie Mercury'),
+	('Kurt Cobain'),
+	('James Hetfield'),
+	('Oliver Sykes'),
+	('Michael Jackson'),
+	('John Lennon'),
+	('Ariana Grande')

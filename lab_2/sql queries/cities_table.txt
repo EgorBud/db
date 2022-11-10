@@ -1,0 +1,12 @@
+CREATE TABLE cities(
+	city TEXT PRIMARY KEY,
+	rate NUMERIC
+);
+
+INSERT INTO cities(city) 
+VALUES
+	('New York'),
+	('Los Angeles'),
+	('Miami'),
+	('Boston'),
+	('San Francisco');
