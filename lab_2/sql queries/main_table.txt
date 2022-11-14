@@ -111,3 +111,75 @@ VALUES
 	('2020-01-04 10:00:00', 'Kurt Cobain', 'Drain You'              , 'San Francisco');
 
 
+INSERT INTO main  VALUES
+	('2020-01-04 11:00:00', 'James Hetfield', 'The Unforgiven', 'San Francisco'),
+	('2020-01-04 12:00:00', 'James Hetfield', 'Fade To Black', 'San Francisco'),
+	('2020-01-04 13:00:00', 'James Hetfield', 'Harvester of Sorrow', 'San Francisco'),
+	('2020-01-04 14:00:00', 'James Hetfield', 'Enter Sandman', 'San Francisco'),
+	('2020-01-04 15:00:00', 'James Hetfield', 'Nothing Else Matters', 'Los Angeles'),
+	('2020-01-04 16:00:00', 'James Hetfield', 'The Unforgiven', 'Los Angeles'),
+	('2020-01-04 17:00:00', 'James Hetfield', 'Fade To Black', 'Los Angeles'),
+	('2020-01-04 18:00:00', 'James Hetfield', 'Harvester of Sorrow', 'Los Angeles'),
+	('2020-01-04 19:00:00', 'James Hetfield', 'Enter Sandman', 'Los Angeles'),
+	('2020-01-04 20:00:00', 'James Hetfield', 'Nothing Else Matters', 'New York'),
+	('2020-01-04 21:00:00', 'James Hetfield', 'The Unforgiven', 'New York'),
+	('2020-01-04 22:00:00', 'James Hetfield', 'Enter Sandman', 'New York'),
+	('2020-01-04 23:00:00', 'James Hetfield', 'Harvester of Sorrow', 'New York');
+
+INSERT INTO main  VALUES
+
+	('2020-01-05 0:00:00', 'Oliver Sykes', 'Suicide Season', 'New York'),
+	('2020-01-05 1:00:00', 'Oliver Sykes', 'Can You Feel My Heart', 'New York'),
+	('2020-01-05 2:00:00', 'Oliver Sykes', 'Throne', 'New York'),
+	('2020-01-05 3:00:00', 'Oliver Sykes', 'Diamonds Aren’t Forever', 'New York'),
+	('2020-01-05 4:00:00', 'Oliver Sykes', 'The House of Wolves', 'New York'),
+	('2020-01-05 5:00:00', 'Oliver Sykes', 'Suicide Season', 'Los Angeles'),
+	('2020-01-05 6:00:00', 'Oliver Sykes', 'Can You Feel My Heart', 'Los Angeles'),
+	('2020-01-05 7:00:00', 'Oliver Sykes', 'Throne', 'Los Angeles'),
+	('2020-01-05 8:00:00', 'Oliver Sykes', 'Diamonds Aren’t Forever', 'Los Angeles'),
+	('2020-01-05 9:00:00', 'Oliver Sykes', 'The House of Wolves', 'Los Angeles'),
+	('2020-01-05 10:00:00', 'Oliver Sykes', 'Suicide Season', 'Miami'),
+	('2020-01-05 11:00:00', 'Oliver Sykes', 'Can You Feel My Heart', 'Miami'),
+	('2020-01-05 12:00:00', 'Oliver Sykes', 'Throne', 'Miami'),
+	('2020-01-05 13:00:00', 'Oliver Sykes', 'Diamonds Aren’t Forever', 'Miami');
+
+INSERT INTO main  VALUES
+
+	('2020-01-05 14:00:00', 'Michael Jackson', 'Who Is It', 'Boston'),
+	('2020-01-05 15:00:00', 'Michael Jackson', 'They Don t Care About Us', 'Boston'),
+	('2020-01-05 16:00:00', 'Michael Jackson', 'I Wanna Be Where You Are', 'Boston'),
+	('2020-01-05 17:00:00', 'Michael Jackson', 'Wanna Be Startin  Somethin ', 'Boston'),
+	('2020-01-05 18:00:00', 'Michael Jackson', 'Thriller', 'Boston'),
+	('2020-01-05 19:00:00', 'Michael Jackson', 'Who Is It', 'San Francisco'),
+	('2020-01-05 20:00:00', 'Michael Jackson', 'They Don t Care About Us', 'San Francisco'),
+	('2020-01-05 21:00:00', 'Michael Jackson', 'I Wanna Be Where You Are', 'San Francisco'),
+	('2020-01-05 22:00:00', 'Michael Jackson', 'Wanna Be Startin  Somethin ', 'San Francisco'),
+	('2020-01-05 23:00:00', 'Michael Jackson', 'Thriller', 'San Francisco'),
+	('2020-01-06 0:00:00', 'Michael Jackson', 'Who Is It', 'Los Angeles'),
+	('2020-01-06 1:00:00', 'Michael Jackson', 'They Don t Care About Us', 'Los Angeles'),
+	('2020-01-06 2:00:00', 'Michael Jackson', 'I Wanna Be Where You Are', 'Los Angeles');
+
+INSERT INTO main  VALUES
+	('2020-01-06 3:00:00', 'John Lennon', 'Whatever Gets You Thru the Night', 'New York');
+	('2020-01-06 4:00:00', 'John Lennon', 'Watching the Wheels', 'New York'),
+	('2020-01-06 5:00:00', 'John Lennon', 'Jealous Guy', 'New York'),
+	('2020-01-06 6:00:00', 'John Lennon', 'Happy Xmas (War Is Over)', 'Los Angeles'),
+	('2020-01-06 7:00:00', 'John Lennon', 'Mind Games', 'Los Angeles'),
+	('2020-01-06 8:00:00', 'John Lennon', 'Whatever Gets You Thru the Night', 'Los Angeles'),
+	('2020-01-06 9:00:00', 'John Lennon', 'Watching the Wheels', 'Los Angeles'),
+	('2020-01-06 10:00:00', 'John Lennon', 'Jealous Guy', 'Los Angeles'),
+	('2020-01-06 11:00:00', 'John Lennon', 'Whatever Gets You Thru the Night', 'Miami'),
+	('2020-01-06 12:00:00', 'John Lennon', 'Mind Games', 'Miami');
+
+INSERT INTO main  VALUES
+
+	('2020-01-06 13:00:00', 'Ariana Grande', 'Problem', 'Miami'),
+	('2020-01-06 14:00:00', 'Ariana Grande', 'Break Free', 'Miami'),
+	('2020-01-06 15:00:00', 'Ariana Grande', 'Bang Bang', 'Miami'),
+	('2020-01-06 16:00:00', 'Ariana Grande', 'Side To Side', 'Boston'),
+	('2020-01-06 17:00:00', 'Ariana Grande', 'no tears left to cry', 'Boston'),
+	('2020-01-06 18:00:00', 'Ariana Grande', 'Problem', 'Boston'),
+	('2020-01-06 19:00:00', 'Ariana Grande', 'Break Free', 'Boston'),
+	('2020-01-06 20:00:00', 'Ariana Grande', 'Bang Bang', 'Boston'),
+	('2020-01-06 21:00:00', 'Ariana Grande', 'Side To Side', 'San Francisco'),
+	('2020-01-06 22:00:00', 'Ariana Grande', 'Problem', 'San Francisco');

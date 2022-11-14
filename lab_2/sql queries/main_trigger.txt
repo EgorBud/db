@@ -1,11 +1,18 @@
 CREATE OR REPLACE FUNCTION input_main() RETURNS trigger AS $$
 	BEGIN
 	--проверка поля songer
-	
+	IF NOT( SELECT EXISTS (SELECT * FROM songers WHERE songers.songer = new.songer)) THEN
+  RAISE EXCEPTION 'Invalid date (singer)';
+END IF;
 	--проверка поля music
-	
+		IF NOT( SELECT EXISTS (SELECT * FROM songs WHERE songs.song= new.music))THEN
+  RAISE EXCEPTION 'Invalid date (music)';
+END IF;
 	--проверка поля city
-
+		IF NOT( SELECT EXISTS (SELECT * FROM cities WHERE cities.city = new.city))THEN
+  RAISE EXCEPTION 'Invalid date (city)';
+END IF;
+RETURN NEW;
     END;
 $$ LANGUAGE plpgsql;
 
